@@ -1,18 +1,9 @@
-#email {
-    color: blue;
+span#firstName, span#lastName {
+    color: red;
     font-weight: bold;
 }
 
-#email[placeholder] {
+#text {
     color: black;
-    font-weight: normal;
-}
-
-#date {
-    color: brown;
-}
-
-#data {
-    color: green;
     font-style: italic;
 }

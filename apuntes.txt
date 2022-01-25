@@ -1,3 +1,18 @@
 1) pasar rutas web al router pero mantener handlebars
 2) crear productos aleatorios para mostrar en products-test
 3) rehacer el chat con websockets
+
+
+REFERENCIAS
+
+Consigna 1)
+
+Ruta Api para productos faker
+http://localhost:8080/api/products/products-test
+
+Ruta Web para productos faker
+http://localhost:8080/products/products-test
+
+PREGUNTAS
+
+1) Puedo manejar ids sencillos con MongoDB? como?
