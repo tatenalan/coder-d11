@@ -11,7 +11,7 @@ const createFakers = async (req, res) => {
                 age: faker.datatype.number(),
                 alias: faker.name.firstName(),
                 avatar: faker.image.image(),
-                date: faker.datatype.datetime()
+                date: '[1/25/2022, 4:14:42 AM]'
             },
             text: faker.lorem.sentence()
         })

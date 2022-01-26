@@ -1,7 +1,5 @@
-1) Cambiar el formato del objeto chat.json
-2) Guardar los mensajes del chat en el File
-3) Normalizar
-
+1) Traer los mensajes guardados en la coleccion messages de Mongo
+2) Normalizar
 
 REFERENCIAS
 
@@ -12,6 +10,11 @@ http://localhost:8080/api/products/products-test
 
 Ruta Web para productos faker
 http://localhost:8080/products/products-test
+
+Consigna 2)
+
+Chat con websockets y normalizaciones
+http://localhost:8080/messages/messages-test
 
 PREGUNTAS
 

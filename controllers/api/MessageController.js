@@ -3,6 +3,7 @@ const Message = require("../../models/Message");
 const getMessages = async (req, res) => {
     try {
         const messages = await Message.find()
+        console.log(messages);
         res.send(messages)
     } catch (error) {
         throw new Error(`Error, can't get messages: ${error}`)
