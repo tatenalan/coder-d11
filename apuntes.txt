@@ -14,7 +14,8 @@ http://localhost:8080/products/products-test
 Consigna 2)
 
 Chat con websockets y normalizaciones
-http://localhost:8080/messages/messages-test
+http://localhost:8080/messages
+Ver por consola el console.log de la normalización
 
 PREGUNTAS
 

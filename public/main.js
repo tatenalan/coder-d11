@@ -15,7 +15,8 @@ function renderChat(messages) {
     console.log(messages);
     messages.forEach(message => {
         $("#messages").append(
-            `<span id="date">${message.author.date}</span>
+            `<span id="date">${message.date}</span>
+            <span id="email">${message.author.id}</span>
             <img width=50px src='${message.author.avatar}'></img>
             <span id="firstName">${message.author.firstName}</span>
             <span id="lastName">${message.author.lastName}</span>
@@ -32,13 +33,14 @@ $("#chatForm").submit(e => {
     e.preventDefault();
     const message = [{
         author: {
-            date: `[${new Date().toLocaleString()}]`,
+            id: $("#email").val(),
             firstName: $("#firstName").val(),
             lastName: $("#lastName").val(),
             age: $("#age").val(),
             alias: $("#alias").val(),
             avatar: $("#avatar").val()
         },
+        date: `[${new Date().toLocaleString()}]`,
         text: $("#msg").val()
     }]
     

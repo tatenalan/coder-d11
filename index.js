@@ -7,8 +7,7 @@ const messageRouterApi = require('./routes/api/messageRouter');
 const messageRouter = require('./routes/web/messageRouter');
 const handlebars = require('express-handlebars');
 
-//borrar luego
-const fs = require('fs')
+const MessageController = require('./controllers/web/MessageController')
 const Message = require("./models/Message");
 
 const { Server: HttpServer } = require('http');
@@ -64,14 +63,22 @@ app.get('*', (req, res) => {
 })
 
 
-const data = fs.readFileSync(__dirname + '/data/chat.json', 'utf-8');
-const messages = JSON.parse(data)
+
+
+
+
+
+
+
+
 
 // 'connection' se ejecuta la primera vez que se abre una nueva conexión
 io.on('connection', (socket) => {
     console.log("usuario conectado");
     // cuando se conecta un usuario enviamos todos los mensajes al front
-    socket.emit('messages', messages)
+    // MessageController.getAll().then((messages) => {
+    //     socket.emit('messages', messages)
+    // })
 
 
     // recibimos un mensaje del front

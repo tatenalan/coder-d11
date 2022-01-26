@@ -13,8 +13,8 @@ const Message = mongoose.model('Message', new Schema(
             age: Number,
             alias: String,
             avatar: String,
-            date: { type: String, default: new Date().toLocaleString() }
         },
+        date: { type: String, default: new Date().toLocaleString() },
         text: String
     }))
 

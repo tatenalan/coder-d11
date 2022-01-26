@@ -23,7 +23,9 @@
                 <br>
                 <input id="lastName" class="form-control" placeholder="Enter your last name">
                 <br>
-                <input id="age" class="form-control" placeholder="Enter your age">
+                <input id="email" type="email" class="form-control" placeholder="Enter your email">
+                <br>
+                <input id="age" type="number" class="form-control" placeholder="Enter your age">
                 <br>
                 <input id="alias" class="form-control" placeholder="Enter your alias">
                 <br>
@@ -32,7 +34,8 @@
                 <br>
 
                 {{#each messages}}
-                    <span id="date">{{this.author.date}}</span>
+                    <span id="date">{{this.date}}</span>
+                    <span id="email">{{this.author.id}}</span>
                     <img width=50px src={{this.author.avatar}}></img>
                     <span id="firstName">{{this.author.firstName}}</span>
                     <span id="lastName">{{this.author.lastName}}</span>
