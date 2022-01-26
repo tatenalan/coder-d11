@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const ServiceException = require("./exceptions/ServiceException");
 const productRouterApi = require('./routes/api/productRouter');
 const productRouter = require('./routes/web/productRouter');
+const messageRouterApi = require('./routes/api/messageRouter');
+// const messageRouter = require('./routes/web/messageRouter');
 const handlebars = require('express-handlebars');
 
 const fs = require('fs')
@@ -51,6 +53,8 @@ app.use(express.static(__dirname + '/public'));
 
 app.use('/api/products', productRouterApi)
 app.use('/products', productRouter)
+app.use('/api/messages', messageRouterApi)
+// app.use('/messages', messageRouter)
 
 // test chat
 app.get('/chat', (req, res) => {
@@ -63,11 +67,14 @@ app.get('*', (req, res) => {
     res.json(new ServiceException(-2, `The route ${req.originalUrl} with method ${req.method} does not exist`))
 })
 
-const messages = [
-    {date:"[1/25/2022, 4:14:42 AM]", firstName: "juan", lastName:"perez", age:22, alias:"el loco", avatar: "https://1000marcas.net/wp-content/uploads/2020/02/logo-Google.png", text: "hola"},
-    {date:"[1/25/2022, 4:14:43 AM]", firstName: "juan2", lastName:"perez2", age:23, alias:"el loco2", avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png", text: "hola2"},
-    {date:"[1/25/2022, 4:14:44 AM]", firstName: "juan3", lastName:"perez3", age:24, alias:"el loco3", avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/2560px-Playstation_logo_colour.svg.png", text: "hola3"},
-];
+// const messages = [
+//     {date:"[1/25/2022, 4:14:42 AM]", firstName: "juan", lastName:"perez", age:22, alias:"el loco", avatar: "https://1000marcas.net/wp-content/uploads/2020/02/logo-Google.png", text: "hola"},
+//     {date:"[1/25/2022, 4:14:43 AM]", firstName: "juan2", lastName:"perez2", age:23, alias:"el loco2", avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png", text: "hola2"},
+//     {date:"[1/25/2022, 4:14:44 AM]", firstName: "juan3", lastName:"perez3", age:24, alias:"el loco3", avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/2560px-Playstation_logo_colour.svg.png", text: "hola3"},
+// ];
+
+const data = fs.readFileSync(__dirname + '/data/chat.json', 'utf-8');
+const messages = JSON.parse(data)
 
 
 // 'connection' se ejecuta la primera vez que se abre una nueva conexión
@@ -79,6 +86,7 @@ io.on('connection', (socket) => {
 
     // recibimos un mensaje del front
     socket.on("newMessage", message => {
+        console.log(`Mensaje nuevo recibido del front ${message}`);
         //  lo guardamos en nuestro array de mensajes para mostrarselo a los nuevos usuarios que ingresen a través del socket "messages"
         messages.push(message);
         // Emitimos a todos los clientes

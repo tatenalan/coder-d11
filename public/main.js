@@ -14,12 +14,12 @@ socket.on('messages', messages => {
 function renderChat(messages) {
     messages.forEach(message => {
         $("#messages").append(
-            `<span id="date">${message.date}</span>
-            <img width=50px src='${message.avatar}'></img>
-            <span id="firstName">${message.firstName}</span>
-            <span id="lastName">${message.lastName}</span>
-            <span id="alias">, alias ${message.alias}</span>
-            <span id="age">(${message.age}):</span>
+            `<span id="date">${message.author.date}</span>
+            <img width=50px src='${message.author.avatar}'></img>
+            <span id="firstName">${message.author.firstName}</span>
+            <span id="lastName">${message.author.lastName}</span>
+            <span id="alias">, alias ${message.author.alias}</span>
+            <span id="age">(${message.author.age}):</span>
             <span id="text">${message.text}</span>
             <br>`)
     })
@@ -29,12 +29,14 @@ function renderChat(messages) {
 $("#chatForm").submit(e => {
     e.preventDefault();
     const message = {
-        firstName: $("#firstName").val(),
-        lastName: $("#lastName").val(),
-        age: $("#age").val(),
-        alias: $("#alias").val(),
-        avatar: $("#avatar").val(),
-        date: `[${new Date().toLocaleString()}]`,
+        author: {
+            date: `[${new Date().toLocaleString()}]`,
+            firstName: $("#firstName").val(),
+            lastName: $("#lastName").val(),
+            age: $("#age").val(),
+            alias: $("#alias").val(),
+            avatar: $("#avatar").val()
+        },
         text: $("#msg").val()
     }
     
@@ -43,5 +45,5 @@ $("#chatForm").submit(e => {
     
     // envio el mensaje al back
     socket.emit("newMessage", message);
-    console.log(message);
+    console.log(`Mensaje nuevo enviado al back ${message}`);
 })

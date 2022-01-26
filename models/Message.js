@@ -12,7 +12,8 @@ const Message = mongoose.model('Message', new Schema(
             lastName:String,
             age: Number,
             alias: String,
-            avatar: String
+            avatar: String,
+            date: { type: String, default: new Date().toLocaleString() }
         },
         text: String
     }))

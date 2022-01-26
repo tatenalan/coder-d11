@@ -1,5 +1,4 @@
 const faker = require('faker')
-const fs = require('fs')
 
 const createFakers = async (req, res) => {
     let products = [];
