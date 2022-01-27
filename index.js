@@ -64,22 +64,9 @@ app.get('*', (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
 // 'connection' se ejecuta la primera vez que se abre una nueva conexión
 io.on('connection', (socket) => {
     console.log("usuario conectado");
-    // cuando se conecta un usuario enviamos todos los mensajes al front
-    // MessageController.getAll().then((messages) => {
-    //     socket.emit('messages', messages)
-    // })
-
 
     // recibimos un mensaje del front
     socket.on("newMessage", message => {
